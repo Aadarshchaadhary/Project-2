@@ -68,5 +68,5 @@ app.get("/profile", (req, res, next) => {
 
 // start server
 app.listen(process.env.PORT, () => {
-  console.log("Server running at http://localhost:3000");
+  console.log("Server running at http://localhost:8080");
 });
