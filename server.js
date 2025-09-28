@@ -32,33 +32,33 @@
 // });
 // app.listen(8080);
 
-require("dotenv").config();
-const express = require("express");
-const app = express();
+// require("dotenv").config();
+// const express = require("express");
+// const app = express();
 
-// middleware
-app.use((req, res, next) => {
-  console.log("middleware running...");
-  next();
-});
+// // middleware
+// app.use((req, res, next) => {
+//   console.log("middleware running...");
+//   next();
+// });
 
-// home route
-app.get("/", (req, res) => {
-  res.send("I am Aadarsh Chaudhary");
-});
+// // home route
+// app.get("/", (req, res) => {
+//   res.send("I am Aadarsh Chaudhary");
+// });
 
-app.get("/instagram", (req, res) => {
-  res.send("czy_aadarsh");
-});
+// app.get("/instagram", (req, res) => {
+//   res.send("czy_aadarsh");
+// });
 
-app.get("/youtube", (req, res) => {
-  res.send("<h1>chai aur code</h1>");
-});
+// app.get("/youtube", (req, res) => {
+//   res.send("<h1>chai aur code</h1>");
+// });
 
-// profile route with error
-app.get("/profile", (req, res, next) => {
-  return next(new Error("something went wrong"));
-});
+// // profile route with error
+// app.get("/profile", (req, res, next) => {
+//   return next(new Error("something went wrong"));
+// });
 
 // error handler middleware (must be at the end)
 // app.use((err, req, res, next) => {
@@ -67,6 +67,24 @@ app.get("/profile", (req, res, next) => {
 // });
 
 // start server
-app.listen(process.env.PORT, () => {
-  console.log("Server running at http://localhost:8080");
+// app.listen(process.env.PORT, () => {
+//   console.log("Server running at http://localhost:8080");
+// });
+
+const express = require("express");
+const app = express;
+
+const cookieParser = require("cookie-parser");
+const path = require("path");
+
+app.use(express.json());
+app.user(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
+app.request("view engine", "ejs");
+
+app.length("/", (req, res) => {
+  res.send("Wellcome");
 });
+
+app.listen(8080);
