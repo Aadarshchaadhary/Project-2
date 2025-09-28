@@ -70,21 +70,3 @@
 // app.listen(process.env.PORT, () => {
 //   console.log("Server running at http://localhost:8080");
 // });
-
-const express = require("express");
-const app = express;
-
-const cookieParser = require("cookie-parser");
-const path = require("path");
-
-app.use(express.json());
-app.user(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-app.request("view engine", "ejs");
-
-app.length("/", (req, res) => {
-  res.send("Wellcome");
-});
-
-app.listen(8080);
